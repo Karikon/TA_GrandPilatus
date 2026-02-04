@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
   <div class="luxury-login-container">
     <div class="login-frame">
       <div class="brand-header">
-        <span class="subtitle">Welcome to</span>
+        <span class="subtitle">Willkommen bei</span>
         <h1 class="title">Grand Pilatus</h1>
       </div>
 
@@ -33,23 +33,23 @@ import { CommonModule } from '@angular/common';
         
         <form [formGroup]="form" (ngSubmit)="submit()">
           <mat-form-field appearance="outline" class="full custom-field">
-            <mat-label>Email Address</mat-label>
+            <mat-label>E-Mail-Adresse</mat-label>
             <input matInput formControlName="email" type="email" required>
             <mat-icon matSuffix class="gold-icon">mail_outline</mat-icon>
-            <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
-            <mat-error *ngIf="form.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('required')">E-Mail ist erforderlich</mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">Bitte geben Sie eine gültige E-Mail ein</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="full custom-field">
-            <mat-label>Password</mat-label>
+            <mat-label>Passwort</mat-label>
             <input matInput formControlName="password" type="password" required>
             <mat-icon matSuffix class="gold-icon">lock_outline</mat-icon>
-            <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="form.get('password')?.hasError('required')">Passwort ist erforderlich</mat-error>
           </mat-form-field>
 
           <button mat-raised-button color="primary" class="full luxury-btn" [disabled]="form.invalid || loading">
-            <span *ngIf="!loading">ACCESS DASHBOARD</span>
-            <span *ngIf="loading">VERIFYING...</span>
+            <span *ngIf="!loading">ZUM DASHBOARD</span>
+            <span *ngIf="loading">ÜBERPRÜFE...</span>
           </button>
         </form>
       </mat-card>
@@ -192,7 +192,7 @@ export class LoginComponent {
       },
       error: (e) => {
         this.loading = false;
-        this.snack.open(e?.error?.error || 'Login failed', 'OK', { duration: 3500 });
+        this.snack.open(e?.error?.error || 'Anmeldung fehlgeschlagen', 'OK', { duration: 3500 });
       }
     });
   }
