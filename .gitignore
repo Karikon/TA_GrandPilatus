@@ -1,0 +1,16 @@
+# Basics
+.DS_Store
+node_modules
+/dist
+/.angular
+/.vscode
+
+# Environment
+.env
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# OS
+Thumbs.db
