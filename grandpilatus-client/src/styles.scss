@@ -1,0 +1,197 @@
+/* Luxury Resort Theme - GrandPilatus */
+@use '@angular/material' as mat;
+
+// Define the palette
+$luxury-gold-palette: (
+    50: #fbf7ef,
+    100: #f5ebd6,
+    200: #eedeba,
+    300: #e7d19e,
+    400: #e1c789,
+    500: #dbbd74,
+    600: #c5a059,
+    // Primary Gold
+    700: #af8a45,
+    800: #997433,
+    900: #7a581f,
+    contrast: (600: #1a1a1a,
+    )
+);
+
+@include mat.core();
+
+$grandpilatus-primary: mat.m2-define-palette($luxury-gold-palette, 600, 400, 800);
+$grandpilatus-accent: mat.m2-define-palette(mat.$m2-gray-palette, 900, 600, 400);
+$grandpilatus-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$grandpilatus-theme: mat.m2-define-light-theme((color: (primary: $grandpilatus-primary,
+                accent: $grandpilatus-accent,
+                warn: $grandpilatus-warn,
+            ),
+            typography: mat.m2-define-typography-config($font-family: 'Lato, sans-serif',
+                $headline-1: mat.m2-define-typography-level(96px, 96px, 300, 'Playfair Display, serif'),
+                $headline-2: mat.m2-define-typography-level(60px, 60px, 300, 'Playfair Display, serif'),
+                $headline-3: mat.m2-define-typography-level(48px, 48px, 400, 'Playfair Display, serif'),
+                $headline-4: mat.m2-define-typography-level(34px, 34px, 400, 'Playfair Display, serif'),
+                $headline-5: mat.m2-define-typography-level(24px, 24px, 400, 'Playfair Display, serif'),
+                $headline-6: mat.m2-define-typography-level(20px, 20px, 500, 'Playfair Display, serif'),
+            )));
+
+@include mat.all-component-themes($grandpilatus-theme);
+
+/* Global Luxury Variables */
+:root {
+    --color-gold: #C5A059;
+    --color-gold-light: #DBBD74;
+    --color-gold-dark: #997433;
+    --color-charcoal: #1A1A1A;
+    --color-charcoal-light: #333333;
+    --color-cream: #FAFAFA;
+    --color-white: #FFFFFF;
+    --color-text-main: #333333;
+    --color-text-muted: #666666;
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Lato', sans-serif;
+
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: var(--color-cream);
+    color: var(--color-text-main);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--color-charcoal);
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+a {
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--color-gold-dark);
+    }
+}
+
+/* Material Overrides for Luxury Feel */
+.mat-mdc-button.mat-primary,
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-flat-button.mat-primary {
+    --mdc-filled-button-container-color: var(--color-gold);
+    --mdc-filled-button-label-text-color: var(--color-charcoal); // Dark text on gold
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.mat-mdc-card {
+    background: var(--color-white);
+    border-radius: 4px !important; // Sharp, elegant corners or slightly rounded
+    box-shadow: var(--shadow-card) !important;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* Table Clean up */
+.mat-table {
+    background: transparent;
+}
+
+.mat-header-cell {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+.mat-cell {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-main);
+}
+
+/* ---- Mobile card list (shared across list views) ---- */
+.mobile-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+}
+
+.mobile-card {
+    background: var(--color-white);
+    border-radius: 4px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 16px;
+
+    .mc-title {
+        font-family: var(--font-serif);
+        font-size: 16px;
+        color: var(--color-charcoal);
+        margin: 0 0 10px;
+
+        a {
+            color: var(--color-charcoal);
+        }
+    }
+
+    .mc-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--color-text-muted);
+        margin-bottom: 6px;
+
+        span:last-child {
+            color: var(--color-text-main);
+            font-weight: 500;
+        }
+    }
+
+    .mc-actions {
+        margin-top: 12px;
+        display: flex;
+        gap: 8px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding-top: 10px;
+    }
+}
